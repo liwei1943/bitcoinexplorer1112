@@ -9,4 +9,6 @@ public interface BlockService {
     List<Block> getRecentBlock();
 
     Page<Block> getWithPage();
+
+    Block selectByPrimaryKey(String blockhash);
 }

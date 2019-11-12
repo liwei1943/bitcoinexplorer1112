@@ -34,5 +34,11 @@ public class BlockController {
         return blockPageInfo;
     }
 
+    @GetMapping("/getInfoByHash")
+    public Block getInfoByHash(String blockhash){
+        Block block = blockService.selectByPrimaryKey(blockhash);
+        return block;
+    }
+
 
 }

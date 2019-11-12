@@ -25,4 +25,9 @@ public class BlockServiceImpl implements BlockService {
     public Page<Block> getWithPage() {
         return blockMapper.getWithPage();
     }
+
+    @Override
+    public Block selectByPrimaryKey(String blockhash) {
+        return blockMapper.selectByPrimaryKey(blockhash);
+    }
 }

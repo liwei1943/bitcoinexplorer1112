@@ -469,4 +469,10 @@
       </if>
     </trim>
   </insert>
+  <select id="getRecentUnconfirmed" parameterType="Integer" resultType="io.lw.bitcoinexplorer1112background.po.Transaction">
+    select
+    <include refid="Base_Column_List" />
+    from transaction
+    where size = #{size,jdbcType=INTEGER}
+  </select>
 </mapper>

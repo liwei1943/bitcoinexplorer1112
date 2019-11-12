@@ -623,4 +623,10 @@
       sizeOnDisk = #{sizeondisk,jdbcType=INTEGER}
     where blockhash = #{blockhash,jdbcType=CHAR}
   </update>
+
+  <select id="getRecentBlock" resultType="io.lw.bitcoinexplorer1108back.po.Block">
+    select
+    <include refid="Base_Column_List" />
+    from block
+  </select>
 </mapper>

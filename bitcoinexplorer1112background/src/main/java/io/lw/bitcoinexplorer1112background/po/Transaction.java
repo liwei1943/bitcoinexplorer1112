@@ -1,62 +1,85 @@
 package io.lw.bitcoinexplorer1112background.po;
 
 public class Transaction {
+
+    private Integer txid;
+
+    private Integer transactionId;
+
     private String txhash;
 
-    private Integer confirmations;
+    private String confirmations;
 
-    private Integer receivedtime;
+    private Integer time;
 
-    private Integer status;
+    private Integer amount;
 
     private Integer height;
 
-    private Double totalinput;
+    private Double totalInput;
 
     private Integer weight;
 
-    private String totaloutput;
+    private Integer statu;
+
+    private String totalOutput;
 
     private String fees;
 
-    private Integer feeperbyte;
+    private Integer feePerByte;
 
-    private Integer feeperweight;
+    private Integer feePerWeight;
 
-    private Integer size;
+    private Integer sizeondisk;
 
-    private String blockhash;
+    private String blockId;
+
+    public Integer getTxid() {
+        return txid;
+    }
+
+    public void setTxid(Integer txid) {
+        this.txid = txid;
+    }
+
+    public Integer getTransactionId() {
+        return transactionId;
+    }
+
+    public void setTransactionId(Integer transactionId) {
+        this.transactionId = transactionId;
+    }
 
     public String getTxhash() {
         return txhash;
     }
 
     public void setTxhash(String txhash) {
-        this.txhash = txhash == null ? null : txhash.trim();
+        this.txhash = txhash;
     }
 
-    public Integer getConfirmations() {
+    public String getConfirmations() {
         return confirmations;
     }
 
-    public void setConfirmations(Integer confirmations) {
+    public void setConfirmations(String confirmations) {
         this.confirmations = confirmations;
     }
 
-    public Integer getReceivedtime() {
-        return receivedtime;
+    public Integer getTime() {
+        return time;
     }
 
-    public void setReceivedtime(Integer receivedtime) {
-        this.receivedtime = receivedtime;
+    public void setTime(Integer time) {
+        this.time = time;
     }
 
-    public Integer getStatus() {
-        return status;
+    public Integer getAmount() {
+        return amount;
     }
 
-    public void setStatus(Integer status) {
-        this.status = status;
+    public void setAmount(Integer amount) {
+        this.amount = amount;
     }
 
     public Integer getHeight() {
@@ -67,12 +90,12 @@ public class Transaction {
         this.height = height;
     }
 
-    public Double getTotalinput() {
-        return totalinput;
+    public Double getTotalInput() {
+        return totalInput;
     }
 
-    public void setTotalinput(Double totalinput) {
-        this.totalinput = totalinput;
+    public void setTotalInput(Double totalInput) {
+        this.totalInput = totalInput;
     }
 
     public Integer getWeight() {
@@ -83,12 +106,20 @@ public class Transaction {
         this.weight = weight;
     }
 
-    public String getTotaloutput() {
-        return totaloutput;
+    public Integer getStatu() {
+        return statu;
     }
 
-    public void setTotaloutput(String totaloutput) {
-        this.totaloutput = totaloutput == null ? null : totaloutput.trim();
+    public void setStatu(Integer statu) {
+        this.statu = statu;
+    }
+
+    public String getTotalOutput() {
+        return totalOutput;
+    }
+
+    public void setTotalOutput(String totalOutput) {
+        this.totalOutput = totalOutput;
     }
 
     public String getFees() {
@@ -96,38 +127,38 @@ public class Transaction {
     }
 
     public void setFees(String fees) {
-        this.fees = fees == null ? null : fees.trim();
+        this.fees = fees;
     }
 
-    public Integer getFeeperbyte() {
-        return feeperbyte;
+    public Integer getFeePerByte() {
+        return feePerByte;
     }
 
-    public void setFeeperbyte(Integer feeperbyte) {
-        this.feeperbyte = feeperbyte;
+    public void setFeePerByte(Integer feePerByte) {
+        this.feePerByte = feePerByte;
     }
 
-    public Integer getFeeperweight() {
-        return feeperweight;
+    public Integer getFeePerWeight() {
+        return feePerWeight;
     }
 
-    public void setFeeperweight(Integer feeperweight) {
-        this.feeperweight = feeperweight;
+    public void setFeePerWeight(Integer feePerWeight) {
+        this.feePerWeight = feePerWeight;
     }
 
-    public Integer getSize() {
-        return size;
+    public Integer getSizeondisk() {
+        return sizeondisk;
     }
 
-    public void setSize(Integer size) {
-        this.size = size;
+    public void setSizeondisk(Integer sizeondisk) {
+        this.sizeondisk = sizeondisk;
     }
 
-    public String getBlockhash() {
-        return blockhash;
+    public String getBlockId() {
+        return blockId;
     }
 
-    public void setBlockhash(String blockhash) {
-        this.blockhash = blockhash == null ? null : blockhash.trim();
+    public void setBlockId(String blockId) {
+        this.blockId = blockId;
     }
 }

@@ -20,13 +20,13 @@ public class TestController {
     public String hello(){
         final JSONObject chainInfo = bitcoinRest.getChainInfo();
         final JSONObject blockhashByHeight = bitcoinRest.getBlockhashByHeight(10);
-        final List<JSONObject> blockHeaders = bitcoinRest.getBlockHeaders(5, "000000004349a36b356411297e008ec996d5d6ab0c5cee5bbcf00007733d33d5");
-        final JSONObject blockNoTxDetails = bitcoinRest.getBlockNoTxDetails("0000000003a4f59ce5bd2dbba52f9ef6acb247fa1a15c31fbd0d08eb64743741");
-        final JSONObject blockInfo = bitcoinRest.getBlockInfo("0000000003a4f59ce5bd2dbba52f9ef6acb247fa1a15c31fbd0d08eb64743741");
-        final JSONObject Transaction = bitcoinRest.getTransaction("d845e55fd5f4d5e166bb0edfa44eaf7607988ca95c06a3c9c3680f98931e6053");
+        final List<JSONObject> blockHeaders = bitcoinRest.getBlockHeaders(5, "000000000002b6a6930b4c139ed50bcb64547f5070256b80c441c31275e7a761");
+        final JSONObject blockNoTxDetails = bitcoinRest.getBlockNoTxDetails("000000000007ef560e5f659712555d18b9e58e5b2ef4d6b57928e3930044348e");
+        final JSONObject blockInfo = bitcoinRest.getBlockInfo("000000000007ef560e5f659712555d18b9e58e5b2ef4d6b57928e3930044348e");
+        final JSONObject Transaction = bitcoinRest.getTransaction("0828be2c9c57febf321154c860d09256ecf2ed87044047de69b0d6a0f764e4b5");
         final JSONObject mempoolInfo = bitcoinRest.getMempoolInfo();
         final JSONObject mempoolContents = bitcoinRest.getMempoolContents();
-        final JSONObject utxo = bitcoinRest.getUTXO("e00fd08ec52cc53312a3d97ee91c0662d952c564534aceb84a8e038a73230019", 0);
+        final JSONObject utxo = bitcoinRest.getUTXO("0828be2c9c57febf321154c860d09256ecf2ed87044047de69b0d6a0f764e4b5", 0);
         return null;
     }
 }

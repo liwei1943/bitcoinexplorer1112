@@ -1,6 +1,6 @@
 package io.lw.bitcoinexplorer1112background.service.impl;
 
-import com.github.pagehelper.Page;
+
 import io.lw.bitcoinexplorer1112background.dao.BlockMapper;
 import io.lw.bitcoinexplorer1112background.po.Block;
 import io.lw.bitcoinexplorer1112background.service.BlockService;
@@ -18,18 +18,5 @@ public class BlockServiceImpl implements BlockService {
     private BlockMapper blockMapper;
 
 
-    @Override
-    public List<Block> getRecentBlock() {
-        return blockMapper.getRecentBlock();
-    }
 
-    @Override
-    public Page<Block> getWithPage() {
-        return blockMapper.getWithPage();
-    }
-
-    @Override
-    public Block selectByPrimaryKey(String blockhash) {
-        return blockMapper.selectByPrimaryKey(blockhash);
-    }
 }

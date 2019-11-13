@@ -4,8 +4,10 @@ package io.lw.bitcoinexplorer1112background;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
+@EnableFeignClients
 @MapperScan("io.lw.bitcoinexplorer1112background.dao")
 public class Bitcoinexplorer1112backgroundApplication {
 

@@ -1,24 +1,26 @@
 package io.lw.bitcoinexplorer1112background.controller;
 
 
+import com.alibaba.fastjson.JSONObject;
 import io.lw.bitcoinexplorer1112background.po.Transaction;
 import io.lw.bitcoinexplorer1112background.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/transaction")
 public class TransactionController {
 
-    @Autowired
-    private TransactionService transactionService;
 
     @GetMapping("/getRecentUnconfirmed")
-    public Transaction getRecentUnconfirmed(@RequestBody Integer size){
-        Transaction transactions = transactionService.getRecentUnconfirmed(size);
-        return transactions;
+    public List<JSONObject> getRecentUnconfirmed(@RequestParam(required = false,defaultValue = "20") Integer size){
+        return null;
+    }
+
+    @GetMapping("/getByTxhash")
+    public JSONObject getByTxhash(@RequestParam String txhash){
+        return null;
     }
 }

@@ -1,5 +1,6 @@
 package io.lw.bitcoinexplorer1112background.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
 import io.lw.bitcoinexplorer1112background.po.Block;
@@ -16,27 +17,25 @@ import java.util.List;
 @RequestMapping("/block")
 public class BlockController {
 
-    @Autowired
-    private BlockService blockService;
 
     @GetMapping("/getRecentBlock")
-    public List<Block> getRecentBlock(){
-        List<Block> blocks =  blockService.getRecentBlock();
-        return blocks;
+    public List<JSONObject> getRecentBlock(){
+        return null;
     }
 
-
     @GetMapping("/getWithPage")
-    public PageInfo<Block> getWithPage(@RequestParam(required = false, defaultValue = "1") Integer page){
-        Page<Block> blockPage = blockService.getWithPage();
-        PageInfo<Block> blockPageInfo = blockPage.toPageInfo();
-        return blockPageInfo;
+    public List<JSONObject> getWithPage(@RequestParam(required = false, defaultValue = "1") Integer page){
+        return null;
     }
 
     @GetMapping("/getInfoByHash")
-    public Block getInfoByHash(String blockhash){
-        Block block = blockService.selectByPrimaryKey(blockhash);
-        return block;
+    public JSONObject getInfoByHash(@RequestParam String blockhash){
+        return null;
+    }
+
+    @GetMapping("/getInfoByHeight")
+    public JSONObject getInfoByHeight(@RequestParam Integer height){
+        return null;
     }
 
 

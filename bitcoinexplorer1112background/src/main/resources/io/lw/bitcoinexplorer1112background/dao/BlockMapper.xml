@@ -45,8 +45,8 @@
     values (#{blockhash,jdbcType=CHAR}, #{blockId,jdbcType=INTEGER}, #{confirmations,jdbcType=INTEGER}, 
       #{time,jdbcType=BIGINT}, #{height,jdbcType=INTEGER}, #{txnumber,jdbcType=INTEGER}, 
       #{difficulty,jdbcType=DOUBLE}, #{weight,jdbcType=INTEGER}, #{merkleRoot,jdbcType=CHAR}, 
-      #{version,jdbcType=VARCHAR}, #{bits,jdbcType=INTEGER}, #{miner,jdbcType=VARCHAR}, 
-      #{nonce,jdbcType=INTEGER}, #{txvolume,jdbcType=DOUBLE}, #{blockReward,jdbcType=DOUBLE}, 
+      #{version,jdbcType=VARCHAR}, #{bits,jdbcType=VARCHAR}, #{miner,jdbcType=VARCHAR},
+      #{nonce,jdbcType=VARCHAR}, #{txvolume,jdbcType=DOUBLE}, #{blockReward,jdbcType=DOUBLE},
       #{feeReward,jdbcType=DOUBLE}, #{sizeondisk,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="io.lw.bitcoinexplorer1112background.po.Block">
@@ -136,13 +136,13 @@
         #{version,jdbcType=VARCHAR},
       </if>
       <if test="bits != null">
-        #{bits,jdbcType=INTEGER},
+        #{bits,jdbcType=VARCHAR},
       </if>
       <if test="miner != null">
         #{miner,jdbcType=VARCHAR},
       </if>
       <if test="nonce != null">
-        #{nonce,jdbcType=INTEGER},
+        #{nonce,jdbcType=VARCHAR},
       </if>
       <if test="txvolume != null">
         #{txvolume,jdbcType=DOUBLE},

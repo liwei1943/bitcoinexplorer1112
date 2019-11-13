@@ -21,11 +21,11 @@ public class Block {
 
     private String version;
 
-    private Integer bits;
+    private String bits;
 
     private String miner;
 
-    private Integer nonce;
+    private String nonce;
 
     private Double txvolume;
 
@@ -115,11 +115,11 @@ public class Block {
         this.version = version == null ? null : version.trim();
     }
 
-    public Integer getBits() {
+    public String getBits() {
         return bits;
     }
 
-    public void setBits(Integer bits) {
+    public void setBits(String bits) {
         this.bits = bits;
     }
 
@@ -131,11 +131,11 @@ public class Block {
         this.miner = miner == null ? null : miner.trim();
     }
 
-    public Integer getNonce() {
+    public String getNonce() {
         return nonce;
     }
 
-    public void setNonce(Integer nonce) {
+    public void setNonce(String nonce) {
         this.nonce = nonce;
     }
 

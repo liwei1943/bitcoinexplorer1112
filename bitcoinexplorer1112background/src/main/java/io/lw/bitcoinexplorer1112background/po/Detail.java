@@ -7,9 +7,9 @@ public class Detail {
 
     private String address;
 
-    private String type;
+    private Byte type;
 
-    private String amount;
+    private Double amount;
 
     public String getTxDetailId() {
         return txDetailId;
@@ -35,19 +35,19 @@ public class Detail {
         this.address = address == null ? null : address.trim();
     }
 
-    public String getType() {
+    public Byte getType() {
         return type;
     }
 
-    public void setType(String type) {
-        this.type = type == null ? null : type.trim();
+    public void setType(Byte type) {
+        this.type = type == null ? null : type.byteValue();
     }
 
-    public String getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(String amount) {
-        this.amount = amount == null ? null : amount.trim();
+    public void setAmount(Double amount) {
+        this.amount = amount == null ? null : amount.doubleValue();
     }
 }

@@ -2,7 +2,7 @@ package io.lw.bitcoinexplorer1112background.po;
 
 public class Transaction {
 
-    private Integer txid;
+    private String txid;
 
     private Integer transactionId;
 
@@ -10,7 +10,7 @@ public class Transaction {
 
     private String confirmations;
 
-    private Integer time;
+    private Long time;
 
     private Integer amount;
 
@@ -20,7 +20,7 @@ public class Transaction {
 
     private Integer weight;
 
-    private Integer statu;
+    private Integer status;
 
     private String totalOutput;
 
@@ -32,13 +32,13 @@ public class Transaction {
 
     private Integer sizeondisk;
 
-    private String blockId;
+    private Integer blockId;
 
-    public Integer getTxid() {
+    public String getTxid() {
         return txid;
     }
 
-    public void setTxid(Integer txid) {
+    public void setTxid(String txid) {
         this.txid = txid;
     }
 
@@ -66,11 +66,11 @@ public class Transaction {
         this.confirmations = confirmations;
     }
 
-    public Integer getTime() {
+    public Long getTime() {
         return time;
     }
 
-    public void setTime(Integer time) {
+    public void setTime(Long time) {
         this.time = time;
     }
 
@@ -106,12 +106,12 @@ public class Transaction {
         this.weight = weight;
     }
 
-    public Integer getStatu() {
-        return statu;
+    public Integer getStatus() {
+        return status;
     }
 
-    public void setStatu(Integer statu) {
-        this.statu = statu;
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public String getTotalOutput() {
@@ -154,11 +154,11 @@ public class Transaction {
         this.sizeondisk = sizeondisk;
     }
 
-    public String getBlockId() {
+    public Integer getBlockId() {
         return blockId;
     }
 
-    public void setBlockId(String blockId) {
+    public void setBlockId(Integer blockId) {
         this.blockId = blockId;
     }
 }

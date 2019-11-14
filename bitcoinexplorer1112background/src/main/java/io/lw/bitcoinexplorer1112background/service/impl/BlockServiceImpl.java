@@ -8,12 +8,10 @@ import io.lw.bitcoinexplorer1112background.po.Block;
 import io.lw.bitcoinexplorer1112background.service.BlockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import java.util.ArrayList;
 
 @Service
-@Transactional
 public class BlockServiceImpl implements BlockService {
 
     @Autowired
@@ -21,6 +19,9 @@ public class BlockServiceImpl implements BlockService {
 
     @Autowired
     private BitcoinRest bitcoinRest;
+
+    @Autowired
+    private TransactionServiceImpl transactionServiceImpl;
 
     @Override
     public String syncBlock(String blockhash) {
@@ -44,6 +45,14 @@ public class BlockServiceImpl implements BlockService {
 
         blockMapper.insert(block);
 
+        Integer blockId = block.getBlockId();
+        Long time = block.getTime();
+
+        ArrayList<String> txids = (ArrayList<String>) blockJson.get("tx");
+        for (String txid : txids) {
+            transactionServiceImpl.syncTransaction(txid, blockId, time);
+        }
+
         String nextblockhash = ((JSONObject) blockJson).getString("nextblockhash");
         return nextblockhash;
     }
@@ -54,5 +63,6 @@ public class BlockServiceImpl implements BlockService {
         while (tempBlockhash != null){
             tempBlockhash = syncBlock(tempBlockhash);
         }
+
     }
 }

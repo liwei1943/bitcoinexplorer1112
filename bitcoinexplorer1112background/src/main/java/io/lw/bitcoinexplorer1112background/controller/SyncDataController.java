@@ -15,7 +15,7 @@ public class SyncDataController {
     private BlockService blockService;
 
     @PostMapping("/fullImport")
-    public void fullImport(@RequestParam(required = false,defaultValue = "000000000933ea01ad0ee984209779baaec3ced90fa3f408719526f8d77f4943") String blockhash){
+    public void fullImport(@RequestParam(required = false,defaultValue = "00000000005a96dc4384b083d10793e29c74ef03b8a7e52bc2db861e01e19fa7") String blockhash){
         blockService.syncBlocks(blockhash);
     }
 }

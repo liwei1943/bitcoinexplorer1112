@@ -12,7 +12,7 @@
     <result column="height" jdbcType="INTEGER" property="height" />
     <result column="total_input" jdbcType="DOUBLE" property="totalInput" />
     <result column="weight" jdbcType="INTEGER" property="weight" />
-    <result column="status" jdbcType="TINYINT" property="statu" />
+    <result column="status" jdbcType="TINYINT" property="status" />
     <result column="total_output" jdbcType="DOUBLE" property="totalOutput" />
     <result column="fees" jdbcType="VARCHAR" property="fees" />
     <result column="fee_per_byte" jdbcType="INTEGER" property="feePerByte" />
@@ -34,14 +34,14 @@
     delete from transaction
     where txid = #{txid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="io.lw.bitcoinexplorer1112background.po.Transaction">
-    insert into transaction (txid, transaction_id, txhash, 
+  <insert id="insert" parameterType="io.lw.bitcoinexplorer1112background.po.Transaction" useGeneratedKeys="true" keyProperty="transactionId">
+    insert into transaction (txid, txhash,
       confirmations, time, amount, 
       height, total_input, weight, 
-      status, total_output, fees, 
+      status, total_output, fees,
       fee_per_byte, fee_per_weight, sizeOnDisk, 
       block_id)
-    values (#{txid,jdbcType=INTEGER}, #{transactionId,jdbcType=INTEGER}, #{txhash,jdbcType=CHAR}, 
+    values (#{txid,jdbcType=INTEGER}, #{txhash,jdbcType=CHAR},
       #{confirmations,jdbcType=INTEGER}, #{time,jdbcType=BIGINT}, #{amount,jdbcType=INTEGER}, 
       #{height,jdbcType=INTEGER}, #{totalInput,jdbcType=DOUBLE}, #{weight,jdbcType=INTEGER}, 
       #{status,jdbcType=TINYINT}, #{totalOutput,jdbcType=DOUBLE}, #{fees,jdbcType=VARCHAR}, 
@@ -221,10 +221,4 @@
       block_id = #{blockId,jdbcType=INTEGER}
     where txid = #{txid,jdbcType=INTEGER}
   </update>
-  <select id="getRecentUnconfirmed" parameterType="Integer" resultType="io.lw.bitcoinexplorer1112background.po.Transaction">
-    select
-    <include refid="Base_Column_List" />
-    from transaction
-    where size = #{size,jdbcType=INTEGER}
-  </select>
 </mapper>

@@ -35,14 +35,14 @@
     delete from block
     where blockhash = #{blockhash,jdbcType=CHAR}
   </delete>
-  <insert id="insert" parameterType="io.lw.bitcoinexplorer1112background.po.Block">
-    insert into block (blockhash, block_id, confirmations, 
+  <insert id="insert" parameterType="io.lw.bitcoinexplorer1112background.po.Block" useGeneratedKeys="true" keyProperty="blockId">
+    insert into block (blockhash, confirmations,
       time, height, txnumber, 
       difficulty, weight, merkle_root, 
       version, bits, miner, 
       nonce, txvolume, block_reward, 
       fee_reward, sizeOnDisk)
-    values (#{blockhash,jdbcType=CHAR}, #{blockId,jdbcType=INTEGER}, #{confirmations,jdbcType=INTEGER}, 
+    values (#{blockhash,jdbcType=CHAR}, #{confirmations,jdbcType=INTEGER},
       #{time,jdbcType=BIGINT}, #{height,jdbcType=INTEGER}, #{txnumber,jdbcType=INTEGER}, 
       #{difficulty,jdbcType=DOUBLE}, #{weight,jdbcType=INTEGER}, #{merkleRoot,jdbcType=CHAR}, 
       #{version,jdbcType=VARCHAR}, #{bits,jdbcType=VARCHAR}, #{miner,jdbcType=VARCHAR},

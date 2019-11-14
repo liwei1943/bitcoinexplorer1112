@@ -7,5 +7,4 @@ public interface TransactionMapper {
 
     int insertSelective(Transaction record);
 
-    Transaction getRecentUnconfirmed(Integer size);
 }

@@ -19,8 +19,9 @@ public class TransactionServiceImpl implements TransactionService {
     @Autowired
     private TransactionMapper transactionMapper;
 
+    private DetailServiceImpl detailService;
     @Override
-    public void syncTransaction(String txid, Integer blockId, Long time) {
+    public void syncTransaction(String txid, Integer blockId, Long time){
         JSONObject transactionJson = bitcoinRest.getTransaction(txid);
         Transaction transaction = new Transaction();
         //set amount
@@ -34,6 +35,19 @@ public class TransactionServiceImpl implements TransactionService {
 
         transactionMapper.insert(transaction);
 
+        Integer transactionId = transaction.getTransactionId();
+
+        //transaction detail vout
+        List<JSONObject> vouts = transactionJson.getJSONArray("vout").toJavaList(JSONObject.class);
+        for (JSONObject vout: vouts) {
+            detailService.syncTransactionDetailVout(vout,transactionId);
+        }
+
+        //transaction detail vin
+        List<JSONObject> vins = transactionJson.getJSONArray("vin").toJavaList(JSONObject.class);
+        for (JSONObject vin : vins) {
+            detailService.syncTransactionDetailVin(vin,transactionId);
+        }
 
     }
 }

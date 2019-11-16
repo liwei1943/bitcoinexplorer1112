@@ -27,7 +27,7 @@ public class BitcoinJsonRpcClientImpl implements BitcoinJsonRpcClient {
 
         String string = Base64.getEncoder().encodeToString(str.getBytes());
 
-        hashMap.put("Authorization","Basic"+string);
+        hashMap.put("Authorization","Basic "+string);
         jsonRpcHttpClient.setHeaders(hashMap);
 
 

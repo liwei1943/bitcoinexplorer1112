@@ -6,7 +6,10 @@ import io.lw.bitcoinexplorer1112background.client.BitcoinRest;
 import io.lw.bitcoinexplorer1112background.dao.BlockMapper;
 import io.lw.bitcoinexplorer1112background.po.Block;
 import io.lw.bitcoinexplorer1112background.service.BlockService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -22,6 +25,9 @@ public class BlockServiceImpl implements BlockService {
 
     @Autowired
     private TransactionServiceImpl transactionServiceImpl;
+
+
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Override
     public String syncBlock(String blockhash) {
@@ -50,19 +56,23 @@ public class BlockServiceImpl implements BlockService {
 
         ArrayList<String> txids = (ArrayList<String>) blockJson.get("tx");
         for (String txid : txids) {
-            transactionServiceImpl.syncTransaction(txid, blockId, time);
+
+                transactionServiceImpl.syncTransaction(txid, blockId, time);
+
         }
 
-        String nextblockhash = ((JSONObject) blockJson).getString("nextblockhash");
+        String nextblockhash = blockJson.getString("nextblockhash");
         return nextblockhash;
     }
 
     @Override
+    @Async
     public void syncBlocks(String fromBlockhash) {
+        logger.info("begin to sync blocks");
         String tempBlockhash = fromBlockhash;
         while (tempBlockhash != null){
             tempBlockhash = syncBlock(tempBlockhash);
         }
-
+        logger.info("end to sync blocks");
     }
 }

@@ -2,6 +2,8 @@ package io.lw.bitcoinexplorer1112background.service.impl;
 
 
 import com.alibaba.fastjson.JSONObject;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import io.lw.bitcoinexplorer1112background.client.BitcoinRest;
 import io.lw.bitcoinexplorer1112background.dao.BlockMapper;
 import io.lw.bitcoinexplorer1112background.po.Block;
@@ -81,5 +83,12 @@ public class BlockServiceImpl implements BlockService {
     public List<Block> getRecentBlock() {
         List<Block> block = blockMapper.getRecentBlock();
         return block;
+    }
+
+    @Override
+    public Page<Block> getWithPage(Integer page) {
+        PageHelper.startPage(page, 20);
+        Page<Block> blocks = blockMapper.getWithPage();
+        return blocks;
     }
 }

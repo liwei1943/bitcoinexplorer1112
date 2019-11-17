@@ -1,6 +1,7 @@
 package io.lw.bitcoinexplorer1112background.service;
 
 
+import com.github.pagehelper.Page;
 import io.lw.bitcoinexplorer1112background.po.Block;
 import org.springframework.scheduling.annotation.Async;
 
@@ -15,4 +16,6 @@ public interface BlockService {
 
 
     List<Block> getRecentBlock();
+
+    Page<Block> getWithPage(Integer page);
 }

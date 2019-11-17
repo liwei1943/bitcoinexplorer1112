@@ -232,15 +232,12 @@
       sizeOnDisk = #{sizeondisk,jdbcType=INTEGER}
     where blockhash = #{blockhash,jdbcType=CHAR}
   </update>
-  <select id="getRecentBlock" resultType="io.lw.bitcoinexplorer1112background.po.Block">
+  <select id="getRecentBlock" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from block
+    order by time desc limit 10
   </select>
 
-  <select id="getWithPage" >
-    select
-    <include refid="Base_Column_List" />
-    from block
-  </select>
+
 </mapper>

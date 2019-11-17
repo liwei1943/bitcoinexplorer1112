@@ -12,4 +12,7 @@ public interface BlockService {
 
     @Async
     void syncBlocks(String fromBlockhash);
+
+
+    List<Block> getRecentBlock();
 }

@@ -20,4 +20,6 @@ public interface BlockMapper {
 
 
 
+    List<Block> getRecentBlock();
+
 }

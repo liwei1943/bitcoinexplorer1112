@@ -13,6 +13,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class BlockServiceImpl implements BlockService {
@@ -74,5 +75,11 @@ public class BlockServiceImpl implements BlockService {
             tempBlockhash = syncBlock(tempBlockhash);
         }
         logger.info("end to sync blocks");
+    }
+
+    @Override
+    public List<Block> getRecentBlock() {
+        List<Block> block = blockMapper.getRecentBlock();
+        return block;
     }
 }

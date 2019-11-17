@@ -11,6 +11,8 @@ import io.lw.bitcoinexplorer1112background.service.DetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DetailServiceImpl implements DetailService {
 
@@ -68,4 +70,12 @@ public class DetailServiceImpl implements DetailService {
 
         }
     }
+
+    @Override
+    public List<Detail> getDetailByTransactionId(Integer transactionId) {
+        List<Detail> details = detailMapper.getDetailByTransactionId(transactionId);
+        return details;
+    }
+
+
 }

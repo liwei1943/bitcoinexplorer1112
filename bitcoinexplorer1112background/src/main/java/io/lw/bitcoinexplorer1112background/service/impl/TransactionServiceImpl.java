@@ -1,7 +1,10 @@
 package io.lw.bitcoinexplorer1112background.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import io.lw.bitcoinexplorer1112background.client.BitcoinRest;
+import io.lw.bitcoinexplorer1112background.config.PageConfig;
 import io.lw.bitcoinexplorer1112background.dao.TransactionMapper;
 import io.lw.bitcoinexplorer1112background.po.Transaction;
 import io.lw.bitcoinexplorer1112background.service.TransactionService;
@@ -49,5 +52,18 @@ public class TransactionServiceImpl implements TransactionService {
             detailService.syncTransactionDetailVin(vin,transactionId);
         }
 
+    }
+
+    @Override
+    public List<Transaction> getTransactionByBlockId(Integer blockId) {
+        List<Transaction> transactions = transactionMapper.getTransactionByBlockId(blockId);
+        return transactions;
+    }
+
+    @Override
+    public Page<Transaction> getTransactionByBlockIdWithPage(Integer blockId, Integer page) {
+        PageHelper.startPage(page, PageConfig.PAGE_SIZE);
+        Page<Transaction> transactions = transactionMapper.getTransactionByBlockIdWithPage(blockId);
+        return transactions;
     }
 }

@@ -245,4 +245,11 @@
     from block
     order by time desc
   </select>
+
+  <select id="getBlockByBlockhash" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from block
+    where blockhash = #{blockhash}
+  </select>
 </mapper>

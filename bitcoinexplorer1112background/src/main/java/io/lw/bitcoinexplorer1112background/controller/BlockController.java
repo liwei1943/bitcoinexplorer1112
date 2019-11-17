@@ -61,7 +61,27 @@ public class BlockController {
 
     @GetMapping("/getInfoByHash")
     public JSONObject getInfoByHash(@RequestParam String blockhash){
-        return null;
+        JSONObject blockInfoJson = new JSONObject();
+
+        Block block = blockService.getBlockByBlockhash(blockhash);
+        blockInfoJson.put("blockhash",block.getBlockhash());
+        blockInfoJson.put("confirmations",null);
+        blockInfoJson.put("time",block.getTime());
+        blockInfoJson.put("height",block.getHeight());
+        blockInfoJson.put("miner",block.getMiner());
+        blockInfoJson.put("txSize",block.getTxnumber());
+        blockInfoJson.put("difficulty",block.getDifficulty());
+        blockInfoJson.put("merkleroot",block.getMerkleRoot());
+        blockInfoJson.put("version",block.getVersion());
+        blockInfoJson.put("bits",block.getBits());
+        blockInfoJson.put("weight",block.getWeight());
+        blockInfoJson.put("sizeOnDisk",block.getSizeondisk());
+        blockInfoJson.put("nonce",block.getNonce());
+        blockInfoJson.put("txVol",block.getTxvolume());
+        blockInfoJson.put("blockReward",block.getBlockReward());
+        blockInfoJson.put("feeReward",block.getFeeReward());
+
+        return blockInfoJson;
     }
 
     @GetMapping("/getInfoByHeight")

@@ -18,4 +18,6 @@ public interface BlockService {
     List<Block> getRecentBlock();
 
     Page<Block> getWithPage(Integer page);
+
+    Block getBlockByBlockhash(String blockhash);
 }

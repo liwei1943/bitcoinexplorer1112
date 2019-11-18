@@ -107,4 +107,45 @@ public class TransactionController {
 
         return txJson;
     }
-}
+
+    @GetMapping("/getTransactionByAddressWithPage")
+    public PageDTO<JSONObject> getTransactionByAddressWithPage(@RequestParam String address,
+                                                                @RequestParam(required = false,defaultValue = "1") Integer page){
+        Page<Transaction> transactions = transactionService.getTransactionByAddressWithPage(address, page);
+
+        PageDTO<JSONObject> pageDTO = getPageDTOByPageTransaction(transactions);
+        return pageDTO;
+    }
+
+    private PageDTO<JSONObject> getPageDTOByPageTransaction(Page<Transaction> transactions) {
+        List<JSONObject> transactionJson = transactions.stream().map(tx -> {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("txhash", tx.getTxhash());
+            jsonObject.put("txid",tx.getTransactionId());
+            jsonObject.put("totalOutput", tx.getTotalOutput());
+
+            jsonObject.put("fees", tx.getFees());
+            jsonObject.put("time", tx.getTime());
+
+            List<Detail> txDetails = detailService.getDetailByTransactionId(tx.getTransactionId());
+            List<JSONObject> txDetailJsons = txDetails.stream().map(txDetail -> {
+                JSONObject txDetailJson = new JSONObject();
+                txDetailJson.put("address", txDetail.getAddress());
+                txDetailJson.put("type", txDetail.getType());
+                txDetailJson.put("amount", Math.abs(txDetail.getAmount()));
+                return txDetailJson;
+        }).collect(Collectors.toList());
+            jsonObject.put("txDetails", txDetailJsons);
+            return jsonObject;
+        }).collect(Collectors.toList());
+        PageDTO<JSONObject> pageDTO = new PageDTO<>();
+        pageDTO.setTotal(transactions.getTotal());
+        pageDTO.setPageSize(PageConfig.PAGE_SIZE);
+        pageDTO.setCurrentPage(transactions.getPageNum());
+        pageDTO.setList(transactionJson);
+
+        return pageDTO;
+    }
+
+    }
+

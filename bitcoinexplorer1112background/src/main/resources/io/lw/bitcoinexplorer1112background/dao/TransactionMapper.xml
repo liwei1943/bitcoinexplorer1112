@@ -242,4 +242,10 @@
     from transaction
     where txid = #{txid}
   </select>
+
+  <select id="getTransactionByAddressWithPage" resultMap="BaseResultMap">
+    SELECT distinct(txdetail.transaction_id) as transaction_id2 ,tx.* FROM detail as txdetail left join transaction as tx on txdetail.transaction_id = tx.transaction_id
+    where txdetail.address = #{address}
+    order by time desc
+  </select>
 </mapper>

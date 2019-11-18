@@ -73,4 +73,10 @@ public class TransactionServiceImpl implements TransactionService {
         Transaction transaction = transactionMapper.getTransactionByTxid(txid);
         return transaction;
     }
+
+    @Override
+    public Page<Transaction> getTransactionByAddressWithPage(String address,Integer page) {
+        Page<Transaction> transactions = transactionMapper.getTransactionByAddressWithPage(address);
+        return transactions;
+    }
 }

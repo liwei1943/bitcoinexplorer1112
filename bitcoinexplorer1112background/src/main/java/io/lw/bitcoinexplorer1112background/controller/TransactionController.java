@@ -83,4 +83,28 @@ public class TransactionController {
         return pageDTO;
 
     }
+
+    @GetMapping("/getTransactionByTxid")
+    public JSONObject getTransactionByTxid(@RequestParam String txid){
+        Transaction tx = transactionService.getTransactionByTxid(txid);
+
+        JSONObject txJson = new JSONObject();
+        txJson.put("txid", tx.getTxid());
+        txJson.put("txhash", tx.getTxhash());
+        txJson.put("time", tx.getTime());
+        txJson.put("fees", tx.getFees());
+        txJson.put("totalOutput", tx.getTotalOutput());
+
+        List<Detail> txDetails = detailService.getDetailByTransactionId(tx.getTransactionId());
+        List<JSONObject> txDetailJsons = txDetails.stream().map(txDetail -> {
+            JSONObject txDetailJson = new JSONObject();
+            txDetailJson.put("address", txDetail.getAddress());
+            txDetailJson.put("type", txDetail.getType());
+            txDetailJson.put("amount", Math.abs(txDetail.getAmount()));
+            return txDetailJson;
+        }).collect(Collectors.toList());
+        txJson.put("txDetails", txDetailJsons);
+
+        return txJson;
+    }
 }

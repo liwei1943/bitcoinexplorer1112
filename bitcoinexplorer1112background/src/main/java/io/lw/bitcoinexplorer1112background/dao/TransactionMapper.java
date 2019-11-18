@@ -14,4 +14,6 @@ public interface TransactionMapper {
     List<Transaction> getTransactionByBlockId(@Param("blockId") Integer blockId);
 
     Page<Transaction> getTransactionByBlockIdWithPage(@Param("blockId") Integer blockId);
+
+    Transaction getTransactionByTxid(@Param("txid") String txid);
 }

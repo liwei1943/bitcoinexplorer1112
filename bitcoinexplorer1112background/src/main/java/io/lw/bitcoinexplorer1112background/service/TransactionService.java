@@ -6,7 +6,7 @@ import io.lw.bitcoinexplorer1112background.po.Transaction;
 import java.util.List;
 
 public interface TransactionService {
-    void syncTransaction(String txid, Integer blockId, Long time) throws Throwable;
+    void syncTransaction(String txid, Integer blockId, Long time);
 
     List<Transaction> getTransactionByBlockId(Integer blockId);
 

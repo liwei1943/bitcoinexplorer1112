@@ -14,7 +14,6 @@ public interface BlockService {
     @Async
     void syncBlocks(String fromBlockhash);
 
-
     List<Block> getRecentBlock();
 
     Page<Block> getWithPage(Integer page);

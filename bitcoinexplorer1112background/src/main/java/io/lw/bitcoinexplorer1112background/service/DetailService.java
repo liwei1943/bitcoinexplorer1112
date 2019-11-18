@@ -9,7 +9,7 @@ public interface DetailService {
 
     void syncTransactionDetailVout(JSONObject vout, Integer transactionId);
 
-    void syncTransactionDetailVin(JSONObject vin, Integer transactionId) throws Throwable;
+    void syncTransactionDetailVin(JSONObject vin, Integer transactionId);
 
     List<Detail> getDetailByTransactionId(Integer transactionId);
 }

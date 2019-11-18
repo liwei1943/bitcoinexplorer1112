@@ -22,6 +22,7 @@ public class TransactionServiceImpl implements TransactionService {
     @Autowired
     private TransactionMapper transactionMapper;
 
+    @Autowired
     private DetailServiceImpl detailService;
     @Override
     public void syncTransaction(String txid, Integer blockId, Long time){

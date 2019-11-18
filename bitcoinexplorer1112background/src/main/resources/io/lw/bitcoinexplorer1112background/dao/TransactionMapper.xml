@@ -224,21 +224,21 @@
 
   <select id="getTransactionByBlockId" resultMap="BaseResultMap">
     select
-    <include refid="Base_Column_List" />
+    *
     from transaction
     where block_id = #{blockId}
   </select>
 
   <select id="getTransactionByBlockIdWithPage" resultMap="BaseResultMap">
     select
-    <include refid="Base_Column_List" />
+    *
     from transaction
     where block_id = #{blockId}
   </select>
 
   <select id="getTransactionByTxid" resultMap="BaseResultMap">
     select
-    <include refid="Base_Column_List" />
+    *
     from transaction
     where txid = #{txid}
   </select>

@@ -55,7 +55,7 @@
 
   <select id="getDetailByTransactionId" resultMap="BaseResultMap">
     select
-    <include refid="Base_Column_List" />
+    *
     from detail
     where transaction_id = #{transactionId}
   </select>

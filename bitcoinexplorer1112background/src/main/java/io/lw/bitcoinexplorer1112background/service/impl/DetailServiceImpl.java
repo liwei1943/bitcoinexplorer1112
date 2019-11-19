@@ -77,5 +77,23 @@ public class DetailServiceImpl implements DetailService {
         return details;
     }
 
+    @Override
+    public Integer getTotalByAddress(String address) {
+        Integer totalByAddress = detailMapper.getTotalByAddress(address);
+        return totalByAddress;
+    }
+
+    @Override
+    public Double getReceiveByAddress(String address) {
+        Double receiveByAddress = detailMapper.getReceiveByAddress(address);
+        return receiveByAddress;
+    }
+
+    @Override
+    public Double getSendByAddress(String address) {
+        Double sendByAddress = detailMapper.getSendByAddress(address);
+        return sendByAddress;
+    }
+
 
 }

@@ -59,4 +59,23 @@
     from detail
     where transaction_id = #{transactionId}
   </select>
+
+  <select id="getTotalByAddress" resultType="java.lang.Integer">
+    select
+      count(tx_detail_id)
+    from detail
+    where address = #{address}
+  </select>
+  <select id="getReceiveByAddress" resultType="java.lang.Double">
+    select
+      sum(amount)
+    from detail
+    where address = #{address} and `type` = 1
+  </select>
+  <select id="getSendByAddress" resultType="java.lang.Double">
+    select
+      sum(amount)
+    from detail
+    where address = #{address} and `type` = 0
+  </select>
 </mapper>

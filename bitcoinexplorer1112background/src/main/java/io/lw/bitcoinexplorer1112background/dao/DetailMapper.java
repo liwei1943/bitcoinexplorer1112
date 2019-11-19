@@ -11,4 +11,11 @@ public interface DetailMapper {
     int insertSelective(Detail record);
 
     List<Detail> getDetailByTransactionId(@Param("transactionId") Integer transactionId);
+
+
+    Integer getTotalByAddress(@Param("address") String address);
+
+    Double getReceiveByAddress(@Param("address") String address);
+
+    Double getSendByAddress(@Param("address") String address);
 }

@@ -12,4 +12,11 @@ public interface DetailService {
     void syncTransactionDetailVin(JSONObject vin, Integer transactionId);
 
     List<Detail> getDetailByTransactionId(Integer transactionId);
+
+    Integer getTotalByAddress(String address);
+
+    Double getReceiveByAddress(String address);
+
+    Double getSendByAddress(String address);
+
 }

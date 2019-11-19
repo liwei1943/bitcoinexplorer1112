@@ -252,4 +252,11 @@
     from block
     where blockhash = #{blockhash}
   </select>
+
+  <select id="getInfoByHeight" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from block
+    where height = #{height}
+  </select>
 </mapper>

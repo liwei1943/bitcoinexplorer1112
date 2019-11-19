@@ -19,4 +19,6 @@ public interface BlockService {
     Page<Block> getWithPage(Integer page);
 
     Block getBlockByBlockhash(String blockhash);
+
+    Block getInfoByHeight(Integer height);
 }

@@ -97,4 +97,10 @@ public class BlockServiceImpl implements BlockService {
         Block block = blockMapper.getBlockByBlockhash(blockhash);
         return block;
     }
+
+    @Override
+    public Block getInfoByHeight(Integer height) {
+        Block block = blockMapper.getInfoByHeight(height);
+        return block;
+    }
 }

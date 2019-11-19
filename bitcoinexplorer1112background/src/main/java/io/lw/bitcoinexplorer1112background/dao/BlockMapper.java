@@ -28,4 +28,5 @@ public interface BlockMapper {
 
     Block getBlockByBlockhash(@Param("blockhash") String blockhash);
 
+    Block getInfoByHeight(@Param("height") Integer height);
 }

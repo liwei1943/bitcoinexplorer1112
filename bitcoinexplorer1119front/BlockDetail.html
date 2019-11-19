@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/css/elementui.css">
+    <title>Block Detail</title>
+</head>
+
+<body>
+    <div id="app">
+        <el-form ref="form" :model="BlcokDetail" label-width="80px" style="text-align: center;">
+            <el-form-item label="Hash">
+                {{BlcokDetail.blockhash}}
+            </el-form-item>
+            <el-form-item label="Confirmations">
+                {{BlcokDetail.confirmations}}
+            </el-form-item>
+            <el-form-item label="Timestamp">
+                {{BlcokDetail.time}}
+            </el-form-item>
+            <el-form-item label="Height">
+                {{BlcokDetail.height}}
+            </el-form-item>
+            <el-form-item label="Miner">
+                {{BlcokDetail.miner}}
+            </el-form-item>
+            <el-form-item label="Number of Transactions">
+                {{BlcokDetail.txSize}}
+            </el-form-item>
+            <el-form-item label="Difficulty">
+                {{BlcokDetail.difficulty}}
+            </el-form-item>
+            <el-form-item label="Merkle root">
+                {{BlcokDetail.merkleroot}}
+            </el-form-item>
+            <el-form-item label="Version">
+                {{BlcokDetail.version}}
+            </el-form-item>
+            <el-form-item label="Bits">
+                {{BlcokDetail.bits}}
+            </el-form-item>
+            <el-form-item label="Weight">
+                {{BlcokDetail.weight}}
+            </el-form-item>
+            <el-form-item label="Size">
+                {{BlcokDetail.sizeOnDisk}}
+            </el-form-item>
+            <el-form-item label="Nonce">
+                {{BlcokDetail.nonce}}
+            </el-form-item>
+            <el-form-item label="Transaction Volume">
+                {{BlcokDetail.txVol}}
+            </el-form-item>
+            <el-form-item label="Block Reward">
+                {{BlcokDetail.blockReward}}
+            </el-form-item>
+            <el-form-item label="Fee Reward">
+                {{BlcokDetail.feeReward}}
+            </el-form-item>
+        </el-form>
+
+
+    </div>
+
+    <script src="assets/js/axios.min.js"></script>
+    <script src="assets/js/common.js"></script>
+    <script src="assets/js/vue.js"></script>
+    <script src="assets/js/elementui.js"></script>
+    <script src="viewmodels/BlockDetail.js"></script>
+
+</body>
+
+</html>

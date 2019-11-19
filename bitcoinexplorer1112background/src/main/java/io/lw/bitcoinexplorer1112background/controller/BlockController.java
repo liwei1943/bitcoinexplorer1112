@@ -6,16 +6,14 @@ import io.lw.bitcoinexplorer1112background.dto.PageDTO;
 import io.lw.bitcoinexplorer1112background.po.Block;
 import io.lw.bitcoinexplorer1112background.service.BlockService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/block")
+@CrossOrigin
 public class BlockController {
 
     @Autowired

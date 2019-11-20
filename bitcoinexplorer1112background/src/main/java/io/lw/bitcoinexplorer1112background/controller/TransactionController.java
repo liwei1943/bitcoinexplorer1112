@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/transaction")
+@CrossOrigin
 public class TransactionController {
 
     @Autowired
@@ -32,12 +33,35 @@ public class TransactionController {
 
     @GetMapping("/getRecentUnconfirmed")
     public List<JSONObject> getRecentUnconfirmed(@RequestParam(required = false,defaultValue = "20") Integer size){
-        return null;
+        List<Transaction> transaction= transactionService.getRecentUnconfirmed(size);
+        List<JSONObject> transactionJsons = transaction.stream().map(transaction1 -> {
+            JSONObject transactionJson = new JSONObject();
+            transactionJson.put("txhash", transaction1.getTxhash());
+            transactionJson.put("time", transaction1.getTime());
+            return transactionJson;
+        }).collect(Collectors.toList());
+
+        return transactionJsons;
     }
 
     @GetMapping("/getByTxhash")
     public JSONObject getByTxhash(@RequestParam String txhash){
-        return null;
+        JSONObject transactionJson = new JSONObject();
+
+        Transaction transaction = transactionService.getByTxhash(txhash);
+        transactionJson.put("txhash",transaction.getTxhash());
+        transactionJson.put("status",transaction.getStatus());
+        transactionJson.put("time",transaction.getTime());
+        transactionJson.put("weight",transaction.getWeight());
+        transactionJson.put("confirmations",transaction.getConfirmations());
+        transactionJson.put("totalInput",transaction.getTotalInput());
+        transactionJson.put("totalOutput",transaction.getTotalOutput());
+        transactionJson.put("fees",transaction.getFees());
+        transactionJson.put("feePerByte",transaction.getFeePerByte());
+        transactionJson.put("feePerWeight",transaction.getFeePerWeight());
+        transactionJson.put("sizeOnDisk",transaction.getSizeondisk());
+
+        return transactionJson;
     }
 
     @GetMapping("/getTransactionByBlockId")

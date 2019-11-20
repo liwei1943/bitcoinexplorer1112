@@ -33,28 +33,20 @@
             <el-container>
                 <el-header>
                     <div>
-                        <h3>Latest blocks</h3>
+                        <h3>Latest unconfirmed transactions</h3>
                     </div>
                 </el-header>
                 <el-main>
-                    <el-table :data="blocks" style="width: 100%">
-                        <el-table-column prop="height" label="Height" width="180">
+                    <el-table :data="transactions" style="width: 100%">
+                        <el-table-column prop="txhash" label="Hash" width="180">
                             <template slot-scope="scope">
-                                <a :href="'http://localhost:5000/BlockDetail?blockhash='+scope.row.blockhash"
-                                    style="text-decoration: none;color: blue;">{{scope.row.height}}</a>
+                                <a :href="'http://localhost:5000/TransactionDetail?txhash='+scope.row.txhash"
+                                    style="text-decoration: none;color: blue;">{{scope.row.txhash}}</a>
                             </template>
                         </el-table-column>
-                        <el-table-column prop="blockhash" label="Hash" width="180">
-                            <template slot-scope="scope">
-                                <a :href="'http://localhost:5000/BlockDetail?blockhash='+scope.row.blockhash"
-                                    style="text-decoration: none;color: blue;">{{scope.row.blockhash}}</a>
-                            </template>
+                        <el-table-column prop="time" label="Time" width="180">
                         </el-table-column>
-                        <el-table-column prop="time" label="Mined" width="180">
-                        </el-table-column>
-                        <el-table-column prop="miner" label="Miner" width="180">
-                        </el-table-column>
-                        <el-table-column prop="size" label="Size" width="180">
+                        <el-table-column prop="amount" label="Amount (BTC)" width="180">
                         </el-table-column>
                     </el-table>
                 </el-main>
@@ -68,7 +60,7 @@
     <script src="assets/js/common.js"></script>
     <script src="assets/js/vue.js"></script>
     <script src="assets/js/elementui.js"></script>
-    <script src="viewmodels/RecentBlock.js"></script>
+    <script src="viewmodels/Transaction.js"></script>
 
 </body>
 

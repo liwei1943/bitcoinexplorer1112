@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/css/elementui.css">
+    <title>Block Detail</title>
+</head>
+
+<body>
+    <div id="app">
+        <el-form ref="form" :model="TransactionDetail" label-width="80px" style="text-align: center;">
+            <el-form-item label="Hash">
+                {{TransactionDetail.txhash}}
+            </el-form-item>
+            <el-form-item label="Status">
+                {{TransactionDetail.status}}
+            </el-form-item>
+            <el-form-item label="Received Time">
+                {{TransactionDetail.time}}
+            </el-form-item>
+            <el-form-item label="Size">
+                {{TransactionDetail.sizeOnDisk}}
+            </el-form-item>
+            <el-form-item label="Weight">
+                {{TransactionDetail.weight}}
+            </el-form-item>
+            <el-form-item label="Included in Block">
+                {{}}
+            </el-form-item>
+            <el-form-item label="Confirmations">
+                {{TransactionDetail.confirmations}}
+            </el-form-item>
+            <el-form-item label="Total Input">
+                {{TransactionDetail.merkleroot}}
+            </el-form-item>
+            <el-form-item label="Total Output">
+                {{TransactionDetail.version}}
+            </el-form-item>
+            <el-form-item label="Fees">
+                {{TransactionDetail.bits}}
+            </el-form-item>
+            <el-form-item label="Fee per byte">
+                {{TransactionDetail.weight}}
+            </el-form-item>
+            <el-form-item label="Fee per weight unit">
+                {{TransactionDetail.sizeOnDisk}}
+            </el-form-item>
+            <el-form-item label="Value when transacted">
+                {{}}
+            </el-form-item>
+        </el-form>
+
+
+    </div>
+
+    <script src="assets/js/axios.min.js"></script>
+    <script src="assets/js/common.js"></script>
+    <script src="assets/js/vue.js"></script>
+    <script src="assets/js/elementui.js"></script>
+    <script src="viewmodels/TransactionDetail.js"></script>
+
+</body>
+
+</html>

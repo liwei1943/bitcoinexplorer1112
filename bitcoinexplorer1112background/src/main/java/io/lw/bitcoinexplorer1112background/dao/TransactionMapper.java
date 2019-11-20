@@ -18,4 +18,8 @@ public interface TransactionMapper {
     Transaction getTransactionByTxid(@Param("txid") String txid);
 
     Page<Transaction> getTransactionByAddressWithPage(@Param("address") String address);
+
+    List<Transaction> getRecentUnconfirmed(Integer size);
+
+    Transaction getByTxhash(@Param("txhash") String txhash);
 }

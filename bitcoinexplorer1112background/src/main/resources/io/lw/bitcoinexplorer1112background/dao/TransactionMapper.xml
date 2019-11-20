@@ -248,4 +248,18 @@
     where txdetail.address = #{address}
     order by time desc
   </select>
+
+  <select id="getRecentUnconfirmed" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from transaction
+    order by time desc limit 20
+  </select>
+
+  <select id="getByTxhash" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from transaction
+    where txhash = #{txhash}
+  </select>
 </mapper>

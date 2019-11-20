@@ -79,4 +79,16 @@ public class TransactionServiceImpl implements TransactionService {
         Page<Transaction> transactions = transactionMapper.getTransactionByAddressWithPage(address);
         return transactions;
     }
+
+    @Override
+    public List<Transaction> getRecentUnconfirmed(Integer size) {
+        List<Transaction> transaction = transactionMapper.getRecentUnconfirmed(size);
+        return transaction;
+    }
+
+    @Override
+    public Transaction getByTxhash(String txhash) {
+        Transaction transaction = transactionMapper.getByTxhash(txhash);
+        return transaction;
+    }
 }

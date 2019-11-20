@@ -1,15 +1,15 @@
 var app = new Vue({
     el: '#app',
     data: {
-        blocks:[],
+        transactions:[],
         
     },
     methods:{
-        getRecentBlocks(){
-            axios.get("/block/getRecentBlock")
+        getRecentTransactions(){
+            axios.get("/transaction/getRecentUnconfirmed")
             .then(function (response) {
                 console.log(response);
-                app.blocks = response.data;
+                app.transactions = response.data;
             })
             .catch(function (error) {
                 console.log(error);
@@ -23,6 +23,6 @@ var app = new Vue({
         }
     },
     mounted(){
-        this.getRecentBlocks();
+        this.getRecentTransactions();
     }
 })

@@ -15,4 +15,8 @@ public interface TransactionService {
     Transaction getTransactionByTxid(String txid);
 
     Page<Transaction> getTransactionByAddressWithPage(String address,Integer page);
+
+    List<Transaction> getRecentUnconfirmed(Integer size);
+
+    Transaction getByTxhash(String txhash);
 }

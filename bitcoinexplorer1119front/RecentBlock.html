@@ -44,10 +44,14 @@
                                     style="text-decoration: none;color: blue;">{{scope.row.height}}</a>
                             </template>
                         </el-table-column>
-                        <el-table-column prop="blockhash" label="Hash" width="180">
+                        <el-table-column prop="blockhash" label="Hash" width="500">
                             <template slot-scope="scope">
                                 <a :href="'http://localhost:5000/BlockDetail?blockhash='+scope.row.blockhash"
-                                    style="text-decoration: none;color: blue;">{{scope.row.blockhash}}</a>
+                                    style="text-decoration: none;color: blue;">
+                                    <div class="blockhash">
+                                        {{'0..' + scope.row.blockhash.substr(12)}}
+                                    </div>
+                                </a>
                             </template>
                         </el-table-column>
                         <el-table-column prop="time" label="Mined" width="180">
@@ -55,6 +59,9 @@
                         <el-table-column prop="miner" label="Miner" width="180">
                         </el-table-column>
                         <el-table-column prop="size" label="Size" width="180">
+                            <template slot-scope="scope">
+                                {{scope.row.size.toLocaleString()}} bytes
+                            </template>
                         </el-table-column>
                     </el-table>
                 </el-main>

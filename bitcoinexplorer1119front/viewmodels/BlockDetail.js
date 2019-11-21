@@ -4,10 +4,10 @@ var app = new Vue({
 
         blockhash: "",
         BlcokDetail: {},
-        page: 1,
         total: 0,
         pageSize: 10,
-        txPageinfo: "",
+        txPageinfo: [],
+        Transactions:[]
     },
     methods: {
         getBlockByBlockHash() {
@@ -22,23 +22,24 @@ var app = new Vue({
         getTransactionByBlockhashWithPage() {
             axios.get("/transaction/getTransactionByBlockhashWithPage", { params: { blockhash: this.blockhash, page: this.page } }).then(function (response) {
                 console.log(response);
-                app.txPageinfo = response.data;
-                app.page = response.data.page;
+                app.txPageinfo = response.data.list;
                 app.total = response.data.total;
                 app.pageSize = response.data.pageSize;
+                console.log(response.data.list.txDetails+
+                    '222222')
+
+                    app.txPageinfo.forEach(element => {
+                        app.Transactions=element.txDetails;
+                        console.log(element.txDetails+"33333")
+                    });
             })
                 .catch(function (error) {
                     console.log(error);
                 });
         },
-        handleSizeChange(val) {
-            this.pageSize = val;
-            this.getTransactionByBlockhashWithPage(this.page, this.pageSize);
-        },
-        //当前页
-        handleCurrentChange(val) {
+        currentChange(val) {
             this.page = val;
-            this.getTransactionByBlockhashWithPage(this.page, this.pageSize);
+            this.getTransactionByBlockhashWithPage(this.page);
         }
     },
     mounted() {

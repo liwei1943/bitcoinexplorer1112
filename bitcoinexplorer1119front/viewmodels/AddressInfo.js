@@ -4,7 +4,8 @@ var app = new Vue({
         address: '',
         addressInfo: '',
         page: 1,
-        txPageinfo: ''
+        txPageinfo: '',
+        pageSize:10,
     },
     mounted() {
         console.log('view mounted');
@@ -53,12 +54,14 @@ var app = new Vue({
                 .then(function (response) {
                     console.log(response);
                     app.txPageinfo = response.data;
+                    app.total = response.data.total;
+                    app.pageSize = response.data.pageSize;
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
         },
-        handleCurrentChange(val){
+        currentChange(val){
             console.log('current change');
             this.page = val;
             this.getTransactionsByAddress();

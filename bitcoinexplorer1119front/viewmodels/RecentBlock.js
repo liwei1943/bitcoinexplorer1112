@@ -2,7 +2,7 @@ var app = new Vue({
     el: '#app',
     data: {
         blocks:[],
-        
+        keyword:"",
     },
     methods:{
         getRecentBlocks(){
@@ -20,6 +20,10 @@ var app = new Vue({
         },
         toBlock(){
             window.location.href="RecentBlock";
+        },
+        OnSearch(){
+            window.location.href="BlockDetail?blockhash="+this.keyword;
+            
         }
     },
     mounted(){
